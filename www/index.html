@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Contact App</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+
+  <script src="js/index.js"></script>
+  <script src="cordova.js"></script>
+
+
+</head>
+
+<body>
+
+  <div data-role="page" id="home">
+
+    <div class="d-flex justify-content-between align-items-center p-3 flex-row">
+      <p class="fw-bold fs-3 ">Contacts</p>
+      <a href="#form" role="button" class="addlink px-2 rounded-pill">Ajouter</a>
+    </div>
+
+    <div data-role="main" class="main ui-content">
+      <ul id="contactList" data-role="listview" data-filter="true" data-inset="true">
+
+      </ul>
+    </div>
+
+  </div>
+
+  <div data-role="page" id="form">
+
+    <div data-role="main" class="form main ui-content">
+
+    <form>
+
+      <div class="mb-3">
+        <label for="firstName" class="col-4 col-form-label">Prenom</label>
+        <div class="col-8">
+          <input type="text" class="form-control" id="firstName" placeholder="Nom">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Nom</label>
+        <input type="text" id="lastName" class="form-control" placeholder="Prenom">
+      </div>
+
+      <div class="mb-3">
+        <label for="phoneNumer" class="form-label">Numero</label>
+        <input type="text" id="phoneNumber" class="form-control" placeholder="Numero">
+      </div>
+
+      <div class="mb-3 row">
+        <div class="offset-sm-4 col-sm-8">
+          <a href="#home" role="button" class="addlink px-2 rounded-pill" onclick="addContact()">Ajouter</a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  </div>
+
+  
+  <div data-role="page" id="infoContact">
+
+    <div data-role="main" class="infoContact main ui-content">
+
+      <a href="#home"><i class="icon fas fa-arrow-left position-absolute fa-3x start-0 align-self-start " ></i></a>
+
+    <img src="./img/Ellipse 9.png" class="img-fluid rounded-top" alt="">
+    <input type="hidden" id="idContact" name="idContact">
+    <input type="text" readonly name="nomContact" id="nomContact" class="text-primary shadow-none" >
+    <!--<p class="fs-3 text-center w-100 m-3 fw-bold" id="nomContact"></p>-->
+    <div class="rounded rounded-4 shadow-sm m-3 p-3" style="background-color: white; width: 90%;">
+      <div class="form-group">
+        <label for="numContact">Numero</label>
+        <input type="text" readonly name="numContact" id="numContact" class="text-primary shadow-none" >
+      </div>
+      <div class="form-group">
+        <label for="orgContact">Organisation</label>
+        <input type="text" readonly name="orgContact" id="orgContact" class="text-primary shadow-none">
+      </div>
+    </div>
+    <div>
+      <i class="icon fas fa-trash fa-3x rounded rounded-3 shadow-sm" id="deleteIcon"></i>
+      <i class="icon fas fa-edit fa-3x rounded rounded-3 shadow-sm" id="editIcon" onclick="updateContact()"></i>
+      <i hidden class="icon fas fa-times fa-3x rounded rounded-3 shadow-sm" id="cancelEditIcon" onclick="cancelEdit()"></i>
+      <i hidden class="icon fas fa-check fa-3x rounded rounded-3 shadow-sm" id="validEditIcon" onclick="updateInfoContact()"></i>
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+body {
+  background-color: white;
+}
+
+.addlink {
+  background-color: plum;
+  height: fit-content;
+  padding: 2px ;
+}
+
+.addlink:any-link {
+  text-decoration: none !important;
+  color: rgb(171, 98, 171) !important;
+  font-size :large  !important;
+}
+
+li {
+  padding: 15px !important;
+  border: none !important;
+  background-color: white !important;
+}
+
+.contactLink {
+  border: none !important;
+  background-color: white !important;
+}
+
+.ui-icon {
+  color: red !important;
+}
+
+.infoContact {
+  display: flex;
+  justify-content: start;
+  align-items:center;
+  flex-direction: column;
+  margin-top: 10%;
+}
+
+.icon {
+  color: rgb(171, 98, 171);
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+i {
+  cursor: pointer;
+}
+
+.form {
+  
+}
